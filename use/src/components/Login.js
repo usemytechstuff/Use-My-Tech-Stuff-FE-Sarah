@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {login} from '../actions';
+import styled from 'styled-components'
 
 
 
@@ -37,9 +38,8 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div>
-        <p>Log In</p>
-        <form onSubmit={this.login}>
+      <FormContainer>
+        <Form onSubmit={this.login}>
             <label>
                 Username
             
@@ -63,8 +63,8 @@ class Login extends React.Component {
             
             <button onClick={this.routeChange}>Register</button>
             
-        </form>
-      </div>
+        </Form>
+      </FormContainer>
     );
   }
 }
@@ -78,3 +78,43 @@ const mapStateToProps = ({ error, loggingIn }) => ({
     mapStateToProps,
     { login }
   )(Login);
+
+  const FormContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  height: 800px;
+  width: 400px;
+  margin: auto;
+  p {
+    text-align: center;
+  }
+`
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  input {
+    width: 380px;
+    height: 50px;
+    margin: 10px 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 18px;
+    outline: none;
+  }
+  button {
+    height: 50px;
+    width: 380px;
+    margin: 10px 0 10px 10px;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: blueviolet;
+    cursor: pointer;
+  }
+`
