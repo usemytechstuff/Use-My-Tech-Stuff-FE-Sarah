@@ -58,27 +58,28 @@ export const ITEM_DETAIL_SUCCESS = 'ITEM_DETAIL_SUCCESS';
 
 export const itemDetail = id => dispatch => {
     dispatch ({type: ITEM_DETAIL_START});
-    const headers = {Authorization: localStorage.getItem('token')}
+    // const headers = {Authorization: localStorage.getItem('token')}
     return axios.get('https://usemytechstuffapp.herokuapp.com/api/items/' + id).then(res => {
         console.log(res)
         dispatch({type: ITEM_DETAIL_SUCCESS, payload: res.data})
     })
 }
 
-// export const DELETE_START = 'DELETE_START';
-// export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+export const DELETE_START = 'DELETE_START';
+export const DELETE_SUCCESS = 'DELETE_SUCCESS';
 
 
-// export const deleteItem = id => dispatch => {
-//   dispatch({ type: DELETE_START });
-//   axios
-//     .delete(`https://usemytechstuffapp.herokuapp.com/api/items/:id${id}`, {
-//       headers: { Authorization: localStorage.getItem('token') }
-//     })
-//     .then(res => {
-//       dispatch({ type: DELETE_SUCCESS, payload: res.data });
-//     })
-// };
+export const deleteItem = id => dispatch => {
+  dispatch({ type: DELETE_START });
+  return axios
+    .delete('https://usemytechstuffapp.herokuapp.com/api/items/' + id, {
+      headers: { Authorization: localStorage.getItem('token') }
+    })
+    .then(res => {
+      dispatch({ type: DELETE_SUCCESS, payload: res.data });
+    })
+    // return true
+};
 
 // export const EDIT_ITEM_START = 'EDIT_FRIEND_START';
 // export const EDIT_ITEM_SUCCESS = 'EDIT_FRIEND_SUCCESS';

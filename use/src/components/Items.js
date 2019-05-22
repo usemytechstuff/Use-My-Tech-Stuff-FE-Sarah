@@ -6,10 +6,6 @@ import {fetchItems} from '../actions';
 import {withRouter} from 'react-router-dom';
 
 class Items extends React.Component {
-    constructor() {
-        super();
-
-    }
 
 
     componentDidMount() {

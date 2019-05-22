@@ -5,7 +5,7 @@ import SignUp from './components/Signup';
 import ItemForm from './components/ItemForm';
 import PrivateRoute from './PrivateRoute';
 import Items from './components/Items';
-import Navigation from './components/Navigation';
+// import Navigation from './components/Navigation';
 import ItemDetail from './components/ItemDetail';
 
 

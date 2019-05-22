@@ -10,7 +10,7 @@ const Item = props => {
             <div>
                 <p>{props.item.title}</p>
                 <p>{props.item.description}</p>
-                <img src={props.item.imgURL}></img>
+                <img src={props.item.imgURL} alt="uploaded"></img>
             </div>
         </Link>
     )

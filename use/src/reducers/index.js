@@ -26,7 +26,8 @@ const initialState = {
     owner: null,
     items: [],
     gettingDetail: false,
-    item: {}
+    item: {},
+    deletingItem: false,
     
 };
 
@@ -91,7 +92,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 item: action.payload
-
+            }
+        case DELETE_START:
+            return {
+                ...state,
+                deletingItem: true
+            }
+        case DELETE_SUCCESS:
+            return {
+                ...state,
+                deletingItem: false,
+                item: action.payload
             }
 
 
