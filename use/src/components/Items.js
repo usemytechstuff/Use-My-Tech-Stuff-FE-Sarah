@@ -29,8 +29,8 @@ class Items extends React.Component {
     }
 }
 
-const mapStateToProps = ({ fetchingItems}) => ({
-
+const mapStateToProps = ({ items, fetchingItems}) => ({
+    items,
     fetchingItems
 });
 

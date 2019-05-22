@@ -18,7 +18,8 @@ const initialState = {
     signingUp: false,
     addingItem: false,
     fetchingItem: false,
-    owner: null
+    owner: null,
+    items: []
 };
 
 const reducer = (state = initialState, action) => {
@@ -68,7 +69,8 @@ const reducer = (state = initialState, action) => {
         case FETCH_ITEM_SUCCESS:
             return {
                 ...state,
-                fetchingItem: false
+                fetchingItem: false,
+                items: action.payload
             };
 
         

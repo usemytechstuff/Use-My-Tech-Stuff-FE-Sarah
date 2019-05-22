@@ -1,8 +1,12 @@
 import React from 'react';
 
 const Item = props => {
-    return <p>{props.item.title}</p>
-    
+    return (
+        <div>
+            <p>{props.item.title}</p>
+            <p>{props.item.description}</p>
+        </div>
+    )
        
 }
 

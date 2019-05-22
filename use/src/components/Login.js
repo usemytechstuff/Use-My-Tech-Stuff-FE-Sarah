@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {login} from '../actions';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import {Link} from 'react-router-dom';
 
 
 
@@ -30,11 +31,7 @@ class Login extends React.Component {
     .then(() => this.props.history.push('/'))
   };
 
-  routeChange = e => {
-      e.preventDefault();
-      let path = '/register';
-      this.props.history.push(path);
-  }
+ 
 
   render() {
     return (
@@ -61,7 +58,10 @@ class Login extends React.Component {
             </label>
             <button>{this.props.loggingIn ? "Loading" : "Login"}</button>
             
-            <button onClick={this.routeChange}>Register</button>
+
+            <Link to="/register">
+                <button>Register</button>
+            </Link>
             
         </Form>
       </FormContainer>
@@ -109,7 +109,7 @@ const Form = styled.form`
   button {
     height: 50px;
     width: 380px;
-    margin: 10px 0 10px 10px;
+    margin: 10px;
     outline: none;
     font-size: 18px;
     font-weight: 500;

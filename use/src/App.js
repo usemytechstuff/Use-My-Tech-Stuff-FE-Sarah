@@ -24,10 +24,12 @@ function App() {
             </li>
           </ul>
         </nav>
-        <Route path="/login" component ={Login} />
+        
+        <Route exact path="/" component ={Login} />
         <Route path="/register" component={SignUp} />
         <PrivateRoute path="/items" component={Items} />
         <Route path='/create-item' component={ItemForm} />
+        
       </div>
     </Router>
   );

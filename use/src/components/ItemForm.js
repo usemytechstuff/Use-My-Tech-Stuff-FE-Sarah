@@ -10,7 +10,7 @@ class ItemForm extends React.Component {
             type: '',
             description: '',
             price: '',
-            availability: '',
+            availability: true,
             owner: ''
         }
     };
@@ -35,7 +35,7 @@ class ItemForm extends React.Component {
             type: '',
             description: '',
             price: '',
-            availability: '',
+            availability: false,
             }
         });
     }
@@ -51,6 +51,15 @@ class ItemForm extends React.Component {
                             type="text"
                             name="title"
                             value={this.state.item.title}
+                            onChange={this.handleItemChange}
+                        />
+                    </label>
+                    <label>
+                        Image URL
+                        <input
+                            type="text"
+                            name="imgURL"
+                            value={this.state.item.imgURL}
                             onChange={this.handleItemChange}
                         />
                     </label>
