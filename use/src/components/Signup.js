@@ -34,6 +34,24 @@ class SignUp extends React.Component {
 
         <Form onSubmit={this.submitSignUp}>
             <label>
+                First name
+                <input
+                    type="text"
+                    name="firstname"
+                    value={this.state.user.firstname}
+                    onChange={this.handleSignupChange}
+                />
+            </label>
+            <label>
+                Last name
+                <input
+                    type="text"
+                    name="lastname"
+                    value={this.state.user.lastname}
+                    onChange={this.handleSignupChange}
+                />
+            </label>
+            <label>
                 Username
                 <input
                     type="text"
@@ -84,7 +102,7 @@ const mapStateToProps = ({ signingUp }) => ({
   height: 800px;
   width: 400px;
   margin: auto;
-  color: black;
+  
   p {
     text-align: center;
   }

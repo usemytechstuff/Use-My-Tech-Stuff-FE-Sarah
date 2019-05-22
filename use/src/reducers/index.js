@@ -5,7 +5,9 @@ import {
     SIGN_UP_SUCCESS,
     SIGN_UP_ERROR,
     ADD_ITEM_START,
-    ADD_ITEM_SUCCESS
+    ADD_ITEM_SUCCESS,
+    FETCH_ITEM_START,
+    FETCH_ITEM_SUCCESS
 } from '../actions'
 
 
@@ -14,7 +16,9 @@ const initialState = {
     error: null,
     token: localStorage.getItem('token'),
     signingUp: false,
-    addingItem: false
+    addingItem: false,
+    fetchingItem: false,
+    owner: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +32,8 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 loggingIn: false,
-                token: action.payload
+                token: action.payload.token,
+                owner: action.payload.id
             };
         case SIGN_UP_START:
             return {
@@ -53,8 +58,20 @@ const reducer = (state = initialState, action) => {
         case ADD_ITEM_SUCCESS:
             return {
                 ...state,
-                addingItem: false,
-            }
+                addingItem: false
+            };
+        case FETCH_ITEM_START:
+            return {
+                ...state,
+                fetchingItem: true
+            };
+        case FETCH_ITEM_SUCCESS:
+            return {
+                ...state,
+                fetchingItem: false
+            };
+
+        
         default:
             return state;
         

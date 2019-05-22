@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addItem} from '../actions';
+import styled from 'styled-components'
 
 class ItemForm extends React.Component {
     state = {
@@ -10,6 +11,7 @@ class ItemForm extends React.Component {
             description: '',
             price: '',
             availability: '',
+            owner: ''
         }
     };
 
@@ -24,15 +26,25 @@ class ItemForm extends React.Component {
 
     submitItem = e => {
         e.preventDefault();
-        this.props.addItem(this.state.item)
-        .then(() => this.props.history.push('/'))
-    };
+        this.props.addItem(this.state.item).then(() => {
+            this.props.history.push('/items');
+        });
+        this.setState({
+            item: {
+            title: '',
+            type: '',
+            description: '',
+            price: '',
+            availability: '',
+            }
+        });
+    }
 
     render() {
         return (
             <div>
-                <p>Add an item</p>
-                <form onsubmit={this.submitItem}>
+                <h1>Add an item</h1>
+                <Form onSubmit={this.submitItem}>
                     <label>
                         Title
                         <input
@@ -56,16 +68,16 @@ class ItemForm extends React.Component {
                         <input
                             type="text"
                             name="description"
-                            value={this.item.description}
+                            value={this.state.item.description}
                             onChange={this.handleItemChange}
                         />
-                    </label>
+                    </label> 
                     <label>
                         price
                         <input
                             type="integer"
                             name="price"
-                            value={this.item.price}
+                            value={this.state.item.price}
                             onChange={this.handleItemChange}
                         />
                     </label>
@@ -74,12 +86,13 @@ class ItemForm extends React.Component {
                         <input
                             type="boolean"
                             name="availability"
-                            value={this.item.availability}
+                            value={this.state.item.availability}
                             onChange={this.handleItemChange}
                         />
                     </label>
+                    <Button>{this.props.addingItem ? "Loading" : "Add Item"}</Button>
 
-                </form>
+                </Form>
             </div>
         )
     }
@@ -93,4 +106,39 @@ const mapStateToProps = ({addingItem}) => ({
     export default connect(
         mapStateToProps,
         {addItem}
-    )(ItemForm)
+    )(ItemForm) 
+
+    const Form = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    min-height: 800px;
+    width: 600px;
+    margin: auto;
+    input {
+      width: 600px;
+      height: 50px;
+      margin: 10px 0;
+      padding: 0 10px;
+      box-sizing: border-box;
+      border: 1px solid gainsboro;
+      border-radius: 5px;
+      font-size: 18px;
+      outline: none;
+    }
+  `
+  
+  const Button = styled.button`
+    height: 50px;
+    width: 400px;
+    margin: 10px auto;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    background-color: blueviolet;
+    border: 1px solid blueviolet;
+    border-radius: 5px;
+    cursor: pointer;
+  `
