@@ -7,7 +7,12 @@ import {
     ADD_ITEM_START,
     ADD_ITEM_SUCCESS,
     FETCH_ITEM_START,
-    FETCH_ITEM_SUCCESS
+    FETCH_ITEM_SUCCESS,
+    DELETE_START,
+    DELETE_SUCCESS,
+    ITEM_DETAIL_START,
+    ITEM_DETAIL_SUCCESS
+
 } from '../actions'
 
 
@@ -19,7 +24,10 @@ const initialState = {
     addingItem: false,
     fetchingItem: false,
     owner: null,
-    items: []
+    items: [],
+    gettingDetail: false,
+    item: {}
+    
 };
 
 const reducer = (state = initialState, action) => {
@@ -30,6 +38,7 @@ const reducer = (state = initialState, action) => {
                 loggingIn: true
             };
         case LOGIN_SUCCESS:
+        console.log(action.payload)
             return {
                 ...state,
                 loggingIn: false,
@@ -72,6 +81,20 @@ const reducer = (state = initialState, action) => {
                 fetchingItem: false,
                 items: action.payload
             };
+        case ITEM_DETAIL_START:
+            return {
+                ...state,
+                gettingDetail: true,
+            }
+        case ITEM_DETAIL_SUCCESS:
+            console.log(action.payload)
+            return {
+                ...state,
+                item: action.payload
+
+            }
+
+
 
         
         default:

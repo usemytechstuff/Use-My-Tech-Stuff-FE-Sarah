@@ -5,6 +5,8 @@ import SignUp from './components/Signup';
 import ItemForm from './components/ItemForm';
 import PrivateRoute from './PrivateRoute';
 import Items from './components/Items';
+import Navigation from './components/Navigation';
+import ItemDetail from './components/ItemDetail';
 
 
 import './App.css';
@@ -14,12 +16,13 @@ function App() {
     <Router>
       <div className="App">
         <nav>
+          {/* <Navigation /> */}
           <ul>
             <li>
               <Link to="/create-item">Create Item</Link>
             </li>
             <li>
-              <Link to='/'>Home</Link>
+              <Link to='/items'>Home</Link>
 
             </li>
           </ul>
@@ -29,6 +32,7 @@ function App() {
         <Route path="/register" component={SignUp} />
         <PrivateRoute path="/items" component={Items} />
         <Route path='/create-item' component={ItemForm} />
+        <Route path = '/item-detail/:id' component={ItemDetail} />
         
       </div>
     </Router>

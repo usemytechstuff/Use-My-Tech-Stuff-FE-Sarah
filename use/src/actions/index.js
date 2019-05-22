@@ -9,7 +9,7 @@ export const login = creds => dispatch => {
     return axios.post('https://usemytechstuffapp.herokuapp.com/api/login', creds).then(res => {
         console.log(res)
         localStorage.setItem('token', res.data.token);
-        dispatch({ type: LOGIN_SUCCESS, payload: res.data.token})
+        dispatch({ type: LOGIN_SUCCESS, payload: res.data})
     })
     
 }
@@ -32,7 +32,12 @@ export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
 
 export const addItem = item => dispatch => {
     dispatch ({type: ADD_ITEM_START});
-    return axios.post('https://usemytechstuffapp.herokuapp.com/api/items', item).then(res => {
+    const headers = {Authorization: localStorage.getItem('token')}
+    return axios.post(
+        'https://usemytechstuffapp.herokuapp.com/api/items', 
+        item,
+        {headers: headers} 
+    ).then(res => {
         console.log(res)
         dispatch ({type: ADD_ITEM_SUCCESS, payload: res.data})
     })
@@ -48,6 +53,48 @@ export const fetchItems = item => dispatch => {
     })
 }
 
-export function logout() {
-    localStorage.removeItem('user');
+export const ITEM_DETAIL_START = 'ITEM_DETAIL_START';
+export const ITEM_DETAIL_SUCCESS = 'ITEM_DETAIL_SUCCESS';
+
+export const itemDetail = id => dispatch => {
+    dispatch ({type: ITEM_DETAIL_START});
+    const headers = {Authorization: localStorage.getItem('token')}
+    return axios.get('https://usemytechstuffapp.herokuapp.com/api/items/' + id).then(res => {
+        console.log(res)
+        dispatch({type: ITEM_DETAIL_SUCCESS, payload: res.data})
+    })
 }
+
+// export const DELETE_START = 'DELETE_START';
+// export const DELETE_SUCCESS = 'DELETE_SUCCESS';
+
+
+// export const deleteItem = id => dispatch => {
+//   dispatch({ type: DELETE_START });
+//   axios
+//     .delete(`https://usemytechstuffapp.herokuapp.com/api/items/:id${id}`, {
+//       headers: { Authorization: localStorage.getItem('token') }
+//     })
+//     .then(res => {
+//       dispatch({ type: DELETE_SUCCESS, payload: res.data });
+//     })
+// };
+
+// export const EDIT_ITEM_START = 'EDIT_FRIEND_START';
+// export const EDIT_ITEM_SUCCESS = 'EDIT_FRIEND_SUCCESS';
+
+
+// export const editItem = item => dispatch => {
+//   dispatch({ type: EDIT_FRIEND_START });
+//   return axios
+//     .put(`https://usemytechstuffapp.herokuapp.com/api/items/:id${item.id}`, friend, {
+//       headers: { Authorization: localStorage.getItem('token') }
+//     })
+//     .then(res => {
+//       dispatch({ type: EDIT_FRIEND_SUCCESS, payload: res.data });
+//     })
+// };
+
+// export function logout() {
+//     localStorage.removeItem('user');
+// }

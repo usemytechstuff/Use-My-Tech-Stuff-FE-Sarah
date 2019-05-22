@@ -11,7 +11,8 @@ class ItemForm extends React.Component {
             description: '',
             price: '',
             availability: true,
-            owner: ''
+            imgURL: '',
+            owner: 1,
         }
     };
 
@@ -36,6 +37,7 @@ class ItemForm extends React.Component {
             description: '',
             price: '',
             availability: false,
+            imgURL: '',
             }
         });
     }
@@ -99,7 +101,7 @@ class ItemForm extends React.Component {
                             onChange={this.handleItemChange}
                         />
                     </label>
-                    <Button>{this.props.addingItem ? "Loading" : "Add Item"}</Button>
+                    <Button onClick={this.submitItem}>{this.props.addingItem ? "Loading" : "Add Item"}</Button>
 
                 </Form>
             </div>
@@ -108,7 +110,8 @@ class ItemForm extends React.Component {
 
 }
 
-const mapStateToProps = ({addingItem}) => ({
+const mapStateToProps = ({owner, addingItem}) => ({
+    owner,
     addingItem
 });
 
