@@ -1,20 +1,26 @@
-// import React from 'react'
-// import {Link} from 'react-router-dom'
+import React from 'react'
+import {Link} from 'react-router-dom'
 
-// function Navigation({history}) {
-//     // const logout = () => {
-//     //     localStorage.removeItem('user')
-//     //     thisprops.history.push('/')
-//     // }
+const Navigation = () => {
+    
+    const submitLogout = () => {
+        localStorage.removeItem('user');
+        
+    }
 
-//     return (
-//         <div>
-//             <Link to='/items'>Home</Link>
-//             <Link to="/create-item">Add Rental</Link>
+
+    return (
+        <div>
+            <Link to='/items'>Home</Link>
+            <Link to="/items/new">Add Rental</Link>
+            <Link to='/'>
+                <span onClick={() => submitLogout()}>Logout</span>
+            </Link>
             
-//             <button onClick={() => logout()}>Logout</button>
-//         </div>
-//     )
-// }
+            
+            
+        </div>
+    )
+}
 
-// export default Navigation;
+export default Navigation;

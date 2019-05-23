@@ -11,7 +11,9 @@ import {
     DELETE_START,
     DELETE_SUCCESS,
     ITEM_DETAIL_START,
-    ITEM_DETAIL_SUCCESS
+    ITEM_DETAIL_SUCCESS, 
+    EDIT_ITEM_START,
+    EDIT_ITEM_SUCCESS
 
 } from '../actions'
 
@@ -28,6 +30,8 @@ const initialState = {
     gettingDetail: false,
     item: {},
     deletingItem: false,
+    editingItem: false
+    
     
 };
 
@@ -102,6 +106,17 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 deletingItem: false,
+                item: action.payload
+            }
+        case EDIT_ITEM_START:
+            return {
+                ...state,
+                editingItem: true,
+            }
+        case EDIT_ITEM_SUCCESS:
+            return {
+                ...state,
+                editingItem: false,
                 item: action.payload
             }
 

@@ -2,12 +2,14 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {itemDetail, deleteItem} from '../actions';
 import {withRouter} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 
 
 class ItemDetail extends React.Component {
     state = {
-        deletingItem: null
+        deletingItem: null,
+
     }
     componentDidMount() {
 
@@ -22,10 +24,11 @@ class ItemDetail extends React.Component {
         this.props.deleteItem(this.props.item.id).then(() => {
             this.props.history.push('/items');
         })
-
+    } 
     
-    }    
+
     render() {
+        
         return (
             <div>
                 <img src={this.props.item.imgURL} alt="upload"></img>
@@ -34,7 +37,9 @@ class ItemDetail extends React.Component {
                 <p>{this.props.item.description}</p>
                 <p>{this.props.item.price}</p>
                 <p>{this.props.item.availability}</p>
-                <button>Edit</button>
+                <Link to={`/items/${this.props.item.id}/edit`}>
+                    <button>Edit</button>
+                </Link>
                 <button onClick={this.removeItem}>{this.props.deletingItem ? "Deleting" : "Delete Item"}</button>
 
             </div>

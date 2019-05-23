@@ -81,21 +81,19 @@ export const deleteItem = id => dispatch => {
     // return true
 };
 
-// export const EDIT_ITEM_START = 'EDIT_FRIEND_START';
-// export const EDIT_ITEM_SUCCESS = 'EDIT_FRIEND_SUCCESS';
+export const EDIT_ITEM_START = 'EDIT_FRIEND_START';
+export const EDIT_ITEM_SUCCESS = 'EDIT_FRIEND_SUCCESS';
 
 
-// export const editItem = item => dispatch => {
-//   dispatch({ type: EDIT_FRIEND_START });
-//   return axios
-//     .put(`https://usemytechstuffapp.herokuapp.com/api/items/:id${item.id}`, friend, {
-//       headers: { Authorization: localStorage.getItem('token') }
-//     })
-//     .then(res => {
-//       dispatch({ type: EDIT_FRIEND_SUCCESS, payload: res.data });
-//     })
-// };
+export const editItem = item => dispatch => {
+  dispatch({ type: EDIT_ITEM_START });
+  console.log(item.id)
+  return axios
+    .put(`https://usemytechstuffapp.herokuapp.com/api/items/${item.id}`, item, {
+      headers: { Authorization: localStorage.getItem('token') }
+    })
+    .then(res => {
+      dispatch({ type: EDIT_ITEM_SUCCESS, payload: res.data });
+    })
+};
 
-// export function logout() {
-//     localStorage.removeItem('user');
-// }

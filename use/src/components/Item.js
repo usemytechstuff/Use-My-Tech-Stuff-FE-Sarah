@@ -6,7 +6,7 @@ const Item = props => {
 
     
     return (
-        <Link to={`/item-detail/${props.item.id}`} >
+        <Link to={`/items/${props.item.id}`} >
             <div>
                 <p>{props.item.title}</p>
                 <p>{props.item.description}</p>

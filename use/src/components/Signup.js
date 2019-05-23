@@ -6,14 +6,18 @@ import styled from 'styled-components';
 class SignUp extends React.Component {
   state = {
     user: {
+      firstname: "",
+      lastname: "",
       username: "",
       password: "",
       email: ''
+
     }
     
   };
 
   handleSignupChange = e => {
+    
     this.setState({
       user: {
         ...this.state.user,
@@ -25,7 +29,7 @@ class SignUp extends React.Component {
   submitSignUp = e => {
     e.preventDefault();
     this.props.signUp(this.state.user)
-    .then(() => this.props.history.push('/'))
+    .then(() => this.props.history.push('/items'))
   };
 
   render() {
