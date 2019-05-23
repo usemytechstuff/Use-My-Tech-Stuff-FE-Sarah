@@ -18,15 +18,7 @@ const Item = props => {
                 </Link>
             </div>
         </Card>
-        // <Link to={`/items/${props.item.id}`} >
-        //     <div>
-        //         <p>{props.item.title}</p>
-        //         <p>{props.item.description}</p>
-        //         <img src={props.item.imgURL} alt="uploaded"></img>
-        //     </div>
-        // </Link>
     )
-       
 }
 
 export default Item;    

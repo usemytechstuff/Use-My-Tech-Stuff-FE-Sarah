@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
 import Login from './components/Login';
 import SignUp from './components/Signup';
 import ItemForm from './components/ItemForm';
@@ -16,22 +16,12 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <nav>
+        {/* <nav>
           <Navigation />
-          {/* <ul>
-            <li>
-              <Link to="/items/new">Create Item</Link>
-            </li>
-            <li>
-              <Link to='/items'>Home</Link>
-
-            </li>
-          </ul> */}
         </nav>
-        
+         */}
         <Route exact path="/" component ={Login} />
         <Route exact path="/register" component={SignUp} />
-        
         <PrivateRoute exact path='/items/new' component={ItemForm} />
         <PrivateRoute exact path = '/items/:id' component={ItemDetail} />
         <PrivateRoute exact path = '/items/:id/edit' component={ItemEditForm} />

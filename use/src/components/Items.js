@@ -1,12 +1,10 @@
 import React from 'react';
 import Item from './Item';
 import {connect} from 'react-redux';
-import carousel2 from '../images/carousel2.jpg';
-
-
 import {fetchItems} from '../actions';
 import {withRouter} from 'react-router-dom';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Navigation from './Navigation';
 
 class Items extends React.Component {
 
@@ -16,10 +14,13 @@ class Items extends React.Component {
     }
     render() {
         return (
-            <ItemsContainer className="card-deck">
-                {this.props.items.map(item =>
-                    <Item key={item.id} item={item} />)}
-            </ItemsContainer>
+            <div>
+                <Navigation />
+                <ItemsContainer className="card-deck">
+                    {this.props.items.map(item =>
+                        <Item key={item.id} item={item} />)}
+                </ItemsContainer>
+            </div>
         )      
     }
 }

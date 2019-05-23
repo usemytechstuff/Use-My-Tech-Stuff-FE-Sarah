@@ -17,7 +17,7 @@ const Navigation = () => {
             <Image src={carousel2}/>
                 <NavContent className="nav justify-content-end">
                     <Logo className="nav-item">
-                        <img className="nav-link" src={Rentechlogo}/>
+                        <img className="nav-link" src={Rentechlogo} alt="logo"/>
                     </Logo>
                     <li className="nav-item">
                     
@@ -37,12 +37,7 @@ const Navigation = () => {
 }
 
 export default Navigation;
-const HeaderContainer=styled.div`
-    max-width: 1100px;
-    width: 100%;
-    margin: 0 auto;
-   
-`
+
 const Image= styled.img`
     max-width: 1100px;
     width: 100%;

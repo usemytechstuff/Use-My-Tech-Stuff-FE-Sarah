@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {addItem} from '../actions';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Navigation from './Navigation'
 
 class ItemForm extends React.Component {
     state = {
@@ -45,6 +46,7 @@ class ItemForm extends React.Component {
     render() {
         return (
             <div>
+                <Navigation/>
                 <h1>Add an item</h1>
                 <Form onSubmit={this.submitItem}>
                     <label>

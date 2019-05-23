@@ -4,6 +4,7 @@ import {itemDetail, deleteItem} from '../actions';
 import {withRouter} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
+import Navigation from './Navigation'
 
 
 
@@ -26,26 +27,31 @@ class ItemDetail extends React.Component {
 
     render() {
         return (
-            <FormContainer className="card mb-3" >
-                <div className="row no-gutters">
-                    <div className="col-md-6 image-container">
-                        <Image src={this.props.item.imgURL} alt="upload"/>
+            <div>
+                <Navigation />
+           
+                <FormContainer className="card mb-3" >
+                
+                    <div className="row no-gutters">
+                        <div className="col-md-6 image-container">
+                            <Image src={this.props.item.imgURL} alt="upload"/>
+                        </div>
+                        <div className="row-md-6">
+                            <CardBody className="card-body">
+                                <h5 className="card-title">{this.props.item.title}</h5>
+                                <p className="card-text">{this.props.item.type}</p>
+                                <p className="card-text">{this.props.item.description}</p>
+                                <p className="card-text">{this.props.item.price}</p>
+                                <p className="card-text">{this.props.item.availability}</p>
+                                <Link to={`/items/${this.props.item.id}/edit`}>
+                                    <button>Edit</button>
+                                </Link>
+                                <button onClick={this.removeItem}>{this.props.deletingItem ? "Deleting" : "Delete Item"}</button>
+                            </CardBody>
+                        </div>
                     </div>
-                    <div className="row-md-6">
-                        <CardBody className="card-body">
-                            <h5 className="card-title">{this.props.item.title}</h5>
-                            <p className="card-text">{this.props.item.type}</p>
-                            <p className="card-text">{this.props.item.description}</p>
-                            <p className="card-text">{this.props.item.price}</p>
-                            <p className="card-text">{this.props.item.availability}</p>
-                            <Link to={`/items/${this.props.item.id}/edit`}>
-                                <button>Edit</button>
-                            </Link>
-                            <button onClick={this.removeItem}>{this.props.deletingItem ? "Deleting" : "Delete Item"}</button>
-                        </CardBody>
-                    </div>
-                </div>
-            </FormContainer>
+                </FormContainer>
+            </div>
         )
     }
 }
