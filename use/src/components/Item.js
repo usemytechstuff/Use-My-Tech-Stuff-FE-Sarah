@@ -14,7 +14,7 @@ const Item = props => {
                 <h5 class="card-title">{props.item.title}</h5>
                 <p class="card-text">{props.item.description}</p>
                 <Link to={`/items/${props.item.id}`}>
-                    <button class="btn btn-primary">More Details</button>
+                    <button class="btn btn-info btn-sm">More Details</button>
                 </Link>
             </div>
         </Card>

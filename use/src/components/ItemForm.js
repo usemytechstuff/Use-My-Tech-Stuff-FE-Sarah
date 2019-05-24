@@ -2,7 +2,10 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {addItem} from '../actions';
 import styled from 'styled-components';
-import Navigation from './Navigation'
+import Navigation from './Navigation';
+import {withRouter} from 'react-router-dom';
+
+
 
 class ItemForm extends React.Component {
     state = {
@@ -37,7 +40,7 @@ class ItemForm extends React.Component {
             type: '',
             description: '',
             price: '',
-            availability: false,
+            availability: '',
             imgURL: '',
             }
         });
@@ -68,7 +71,7 @@ class ItemForm extends React.Component {
                         />
                     </label>
                     <label>
-                        Type
+                        Type of equipment
                         <input
                             type="text"
                             name="type"
@@ -77,7 +80,7 @@ class ItemForm extends React.Component {
                         />
                     </label>
                     <label>
-                        description
+                        Description
                         <input
                             type="text"
                             name="description"
@@ -86,7 +89,7 @@ class ItemForm extends React.Component {
                         />
                     </label> 
                     <label>
-                        price
+                        Price
                         <input
                             type="integer"
                             name="price"
@@ -97,7 +100,7 @@ class ItemForm extends React.Component {
                     <label>
                         availability
                         <input
-                            type="boolean"
+                            type="text"
                             name="availability"
                             value={this.state.item.availability}
                             onChange={this.handleItemChange}
@@ -117,10 +120,12 @@ const mapStateToProps = ({owner, addingItem}) => ({
     addingItem
 });
 
-    export default connect(
+export default withRouter(
+    connect(
         mapStateToProps,
         {addItem}
-    )(ItemForm) 
+    )(ItemForm)
+);
 
     const Form = styled.div`
     display: flex;

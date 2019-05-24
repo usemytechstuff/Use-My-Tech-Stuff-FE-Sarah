@@ -46,7 +46,7 @@ class ItemDetail extends React.Component {
                                 <Link to={`/items/${this.props.item.id}/edit`}>
                                     <button>Edit</button>
                                 </Link>
-                                <button onClick={this.removeItem}>{this.props.deletingItem ? "Deleting" : "Delete Item"}</button>
+                                <button onClick={this.removeItem}>{this.props.deletingItem ? "Deleting" : "Delete"}</button>
                             </CardBody>
                         </div>
                     </div>
