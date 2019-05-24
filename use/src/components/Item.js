@@ -25,7 +25,7 @@ export default Item;
 
 const Card = styled.div`
     width: 250px;
-    height: auto;
+    max-height: auto;
 
 
     img {

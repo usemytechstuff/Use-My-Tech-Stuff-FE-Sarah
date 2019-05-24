@@ -50,7 +50,8 @@ class ItemForm extends React.Component {
         return (
             <div>
                 <Navigation/>
-                <h1>Add an item</h1>
+                <h1>Rent out your equipment!</h1>
+                <h3>Add an item</h3>
                 <Form onSubmit={this.submitItem}>
                     <label>
                         Title
